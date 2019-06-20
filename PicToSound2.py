@@ -35,8 +35,6 @@ def loadImages():
     print("Loading Images to RAM")
     
     for i in tqdm(range(0,10000)):
-        #num = 0000 + i
-        #print(num)
         imgStack["img{}".format(i)] = LoadImage("img/fc2_save_2019-06-16-132059-" + numToLenFour(i) + ".bmp")
     
     print("fertig")
