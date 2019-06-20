@@ -8,6 +8,9 @@ Created on Thu Jun 20 18:07:49 2019
 import numpy as np
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
+from tqdm import tqdm
+
+imgStack = {} # Images to work with
 
 def LoadImage(filename):
 	return mpimg.imread(filename).astype(np.float)
@@ -27,17 +30,16 @@ def numToLenFour(num):
     if len(str(num)) == 4:
         return str(num)
 
-imgA = LoadImage("fc2_save_2019-06-16-132059-0000.bmp")
-imgB = LoadImage("fc2_save_2019-06-16-132059-0001.bmp")
-imgC = imgA - imgB
-ShowImage("Meh", imgC)
-print(imgC)
-#print(imgA)
-
-d = {}
-for i in range(0,10000):
-    #num = 0000 + i
-    #print(num)
-    d["img{}".format(i)] = LoadImage("fc2_save_2019-06-16-132059-" + numToLenFour(i) + ".bmp")
-
-print("fertig")
+def loadImages():
+    global imgStack
+    print("Loading Images to RAM")
+    
+    for i in tqdm(range(0,10000)):
+        #num = 0000 + i
+        #print(num)
+        imgStack["img{}".format(i)] = LoadImage("img/fc2_save_2019-06-16-132059-" + numToLenFour(i) + ".bmp")
+    
+    print("fertig")
+    
+    
+loadImages()
