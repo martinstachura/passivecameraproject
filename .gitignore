@@ -1,4 +1,1 @@
-# This is our gitignore file.
-# All files / folders listed here will not be tracked by git
-
-img/		# ignore the image folder
+img/
